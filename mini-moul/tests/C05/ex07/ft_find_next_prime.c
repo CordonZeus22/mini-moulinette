@@ -38,6 +38,11 @@ int main(void)
             .expected = 11,
         },
         {
+            .desc = "Next prime after 10000",
+            .n = 10000,
+            .expected = 10007,
+        },
+        {
             .desc = "Next prime after a negative number",
             .n = -5,
             .expected = 2,
