@@ -30,10 +30,25 @@ int	main(void)
 			.str = "-_134556efSghij67",
 			.msg = "-_134556efSghij67",
 			.expected = 1
+		},
+		{
+			.msg = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
+			.str = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
+			.expected = 1
+		},
+		{
+			.msg = "\\x1F !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
+			.str = "\x1F !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
+			.expected = 0
+		},
+		{
+			.msg = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\\x7F",
+			.str = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\x7F",
+			.expected = 0
 		}
 	};
 	int count = sizeof(tests) / sizeof(tests[0]);
-	
+
 	return (run_tests(tests, count));
 }
 
@@ -41,11 +56,11 @@ int	run_tests(t_test *tests, int count)
 {
 	int i;
 	int error = 0;
-	
+
 	for (i = 0; i < count; i++)
 	{
 		int result = ft_str_is_printable(tests[i].str);
-		
+
 		if (result != tests[i].expected)
 		{
 			printf("    " RED "[%d] ft_str_is_printable(\"%s\") Expected %d, got %d\n" DEFAULT, i + 1, tests[i].msg, tests[i].expected, result);
