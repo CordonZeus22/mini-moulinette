@@ -38,6 +38,11 @@ int main(void)
             .expected = 0,
         },
         {
+            .desc = "Square root of 1764",
+            .n = 1764,
+            .expected = 42,
+        },
+        {
             .desc = "Square root of a negative number",
             .n = -5,
             .expected = 0,
