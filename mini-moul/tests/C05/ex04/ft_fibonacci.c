@@ -38,6 +38,11 @@ int main(void)
             .expected = 5,
         },
         {
+            .desc = "Fibonacci of 21",
+            .n = 21,
+            .expected = 10946
+        },
+        {
             .desc = "Fibonacci of a negative number",
             .n = -5,
             .expected = -1,
